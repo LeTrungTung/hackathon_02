@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Sắp xếp mảng</title>
+    <style>
+      input {
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="">nhập vào 1 mảng là các giá trị số</label>
+    <input
+      type="text"
+      placeholder="Nhập mảng gồm các số cách nhau bởi dấu cách"
+      id="inputArr"
+    />
+    <br /><br />
+    <button onclick="sortArr()">Xuất kết quả sắp xếp mảng</button>
+    <p id="result"></p>
+
+    <script>
+      function sortArr() {
+        const valueInput = document.querySelector("#inputArr").value;
+        console.log(55, valueInput);
+        let array = valueInput.split(" ");
+
+        for (let i = 0; i < array.length - 1; i++) {
+          let idmin = i;
+          for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[idmin]) idmin = j;
+          }
+          let t = array[i];
+          array[i] = array[idmin];
+          array[idmin] = t;
+        }
+        const valueresult = document.querySelector("#result");
+        valueresult.innerHTML = array.join(" ");
+      }
+    </script>
+  </body>
+</html>
