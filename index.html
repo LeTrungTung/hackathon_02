@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Feedback-TA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header><h1>Feedback-TA</h1></header>
+      <main>
+        <form action="">
+          <div class="write-content">
+            <h2>Thầy Phú dạy anh em có hay không?????</h2>
+            <div class="showNumber">
+              <input
+                type="text"
+                value="1"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="2"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="3"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="4"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="5"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="6"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="7"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="8"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="9"
+                onclick="get_Number(this,this.value)"
+              />
+              <input
+                type="text"
+                value="10"
+                onclick="get_Number(this,this.value)"
+              />
+            </div>
+            <div class="view-send">
+              <input
+                type="text"
+                placeholder="Write a review"
+                id="inputReview"
+              />
+              <input type="submit" value="Send" id="submitReview" />
+            </div>
+          </div>
+        </form>
+
+        <div class="review-average">
+          <div class="countReviews">
+            <span id="countView"></span>
+            <span>Reviews</span>
+          </div>
+          <div class="averageRating">
+            <span>Average Rating:</span>
+            <span id="id-average"></span>
+          </div>
+        </div>
+        <div class="show-feedback">
+          <div class="cardNumber"><span>8</span></div>
+          <p>This is feedback item 2 coming ferom theo backend</p>
+          <div class="edit-del">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+          </div>
+        </div>
+        <div class="show-feedback">
+          <div class="cardNumber"><span>10</span></div>
+          <p>This is feedback item 1 coming ferom theo backend</p>
+          <div class="edit-del">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
