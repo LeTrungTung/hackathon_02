@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Xoá phần tử trùng của mảng</title>
+  </head>
+  <style>
+    input {
+      width: 500px;
+    }
+  </style>
+  <body>
+    <label for="">Nhập vào 1 mảng bất kỳ</label>
+    <input
+      type="text"
+      id="inputArr"
+      oninput="deleteDulicate()"
+      placeholder="Các phần tử cách nhau bởi dấu cách"
+    />
+    <p>Kết quả mảng sau khi xoá trùng phần tử là:</p>
+    <p id="result"></p>
+    <script>
+      function deleteDulicate() {
+        const valueInput = document.querySelector("#inputArr").value;
+        let convertToArray = valueInput.split(" ");
+        let resultArr = convertToArray.filter(
+          (item, index) => convertToArray.indexOf(item) == index
+        );
+        const valueresult = document.querySelector("#result");
+        valueresult.innerHTML = resultArr;
+      }
+    </script>
+  </body>
+</html>
