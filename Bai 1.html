@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Đảo chuỗi</title>
+  </head>
+  <body>
+    <label for=""></label>
+
+    <input type="text" , id="strInput" oninput="RevrseString()" />
+    <p>Kết quả chuỗi đảo ngược là:</p>
+    <p id="result"></p>
+
+    <script>
+      function RevrseString() {
+        const valueInput = document.querySelector("#strInput").value;
+        console.log(11, valueInput);
+
+        arr = valueInput.split("");
+        let result = "";
+        for (let i = arr.length - 1; i >= 0; i--) {
+          result += arr[i];
+        }
+
+        const valueresult = document.querySelector("#result");
+        valueresult.innerHTML = result;
+      }
+    </script>
+  </body>
+</html>
