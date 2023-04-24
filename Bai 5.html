@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Quản lý sinh viên</title>
+  </head>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    .controlForm   {
+display: flex;
+flex-direction: column;
+    }
+  </style>
+  <body>
+    <h1>Quản lý sinh viên</h1>
+    <div class="controlForm">
+        <form action="" id="formAdd">
+          <input
+            type="text"
+            placeholder="Tạo id sinh viên"
+            id="id-user"
+          />
+          <input
+            type="text"
+            placeholder="Nhập first name"
+            id="name-first"
+          />
+          <input
+            type="text"
+            placeholder="Nhập last name"
+            id="name-last"
+          />
+          <input
+            type="text"
+            placeholder="Nhập tuổi"
+            id="age"
+          />
+          <input type="submit" value="Thêm sinh vien" />
+        </form>
+    <table cellpadding="20">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Id sinh viên</th>
+          <th>Tên sinh viên</th>
+          <th>Tuổi</th>
+          <th>User name</th>
+
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="body">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button>Edit</button><button>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      const data = [
+        {
+          id: "1",
+          firstName: "Tùng",
+          lastName: "Lê Trung",
+          age: "39",
+          username: "trungtung",
+        },
+        {
+          id: "2",
+          firstName: "Tân",
+          lastName: "Trần",
+          age: "20",
+          username: "trantan",
+        },
+        {
+          id: "3",
+          firstName: "Nhàn",
+          lastName: "Thái Thị",
+          age: "12",
+          username: "nhantt",
+        },
+      ];
+      renderUser(data);
+      function renderUser(data) {
+        const tbodyElement = document.querySelector("#body");
+        let contentBody = "";
+        data.forEach((element, index) => {
+          contentBody += `<tr>
+                <td>${index + 1}</td>
+                <td>${element.id}</td>
+                <td>${element.lastName} ${element.firstName}</td>
+                <td>${element.age}</td>
+                <td>${element.username}</td>
+                
+                <td><button onclick="handleEdit('${
+                  element.id
+                }')" >Edit</button> <button onclick="handleDelete('${
+            element.id
+          }')" >Delete</button></td>
+              </tr>`;
+          tbodyElement.innerHTML = contentBody;
+        });
+      }
+      function handleDelete(id) {
+        data.forEach((user, index) => {
+          if (user.id === id) {
+            data.splice(index, 1);
+          }
+        });
+
+        renderUser(data);
+      }
+
+      function handleEdit(id) {
+        
+        let objEdit
+        data.forEach((element) => {
+          if (element.id === id) {
+            objEdit = element;
+            return;
+          }
+        });
+        
+        
+        const editID = document.querySelector("#id-edit-product");
+        editID.disabled = true;
+        const editName = document.querySelector("#name-edit-product");
+        const editPrice = document.querySelector(
+          "#price-edit-product"
+        );
+        editID.value = objEdit.id;
+        editName.value = objEdit.name;
+        editPrice.value = objEdit.price;
+
+        const formEdit = document.querySelector("#formEdit");
+        formEdit.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const listProducts = JSON.parse(
+            localStorage.getItem("products")
+          );
+          // lấy giá trị từ Form
+          const idValue = document.querySelector(
+            "#id-edit-product"
+          ).value;
+          const nameValue = document.querySelector(
+            "#name-edit-product"
+          ).value;
+          const priceValue = document.querySelector(
+            "#price-edit-product"
+          ).value;
+          const productUpdate = {
+            id: idValue,
+            name: nameValue,
+            price: priceValue,
+          };
+          console.log("ktra productUpdate", productUpdate);
+          listProducts.forEach((item, index) => {
+            if (item.id === productUpdate.id) {
+              listProducts.splice(index, 1, productUpdate);
+            }
+          });
+          localStorage.setItem(
+            "products",
+            JSON.stringify(listProducts)
+          );
+          renderProducts();
+        });
+      }
+    </script>
+  </body>
+</html>
